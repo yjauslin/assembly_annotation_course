@@ -19,4 +19,4 @@ OUT_DIR=/data/users/${USER}/assembly_annotation_course/trinity_transcriptome_ass
 module load Trinity/2.15.1-foss-2021a
 
 #run trinity for paired-end reads in fastq files
-Trinity --seqType fq --left $READS_DIR/ERR754081_1_cleaned.fastq.gz --right $READS_DIR/ERR754081_2_cleaned.fastq
+Trinity --seqType fq --left $READS_DIR/ERR754081_1_cleaned.fastq.gz --right $READS_DIR/ERR754081_2_cleaned.fastq.gz --CPU 16 --max_memory 64G 
