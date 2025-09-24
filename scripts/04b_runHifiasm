@@ -25,4 +25,4 @@ cd $OUT_DIR
 
 apptainer exec --bind $READS_DIR $CONTAINER_DIR hifiasm -o ERR11437318.asm $READS_DIR/ERR11437318.fastq.gz
 
-awk '/^S/{print ">"$2;print $3}' ERR11437318.gfa > ERR11437318.fa
+awk '/^S/{print ">"$2;print $3}' ERR11437318.asm.bp.p_ctg.gfa > ERR11437318.bp.p_ctg.fa
