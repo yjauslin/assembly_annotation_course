@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+#SBATCH --time=1-00:00:00
+#SBATCH --mem=64G
+#SBATCH --cpus-per-task=16
+#SBATCH --job-name=hifiasm
+#SBATCH --mail-user=yannick.jauslin@students.unibe.ch
+#SBATCH --mail-type=end
+#SBATCH --output=/data/users/yjauslin/output_hifiasm_%j.o
+#SBATCH --error=/data/users/yjauslin/error_hifiasm_%j.e
+#SBATCH --partition=pibu_el8
+
+#saving reads, container and output directory as variables
+READS_DIR=/data/users/${USER}/assembly_annotation_course/Hiroshima
+
+CONTAINER_DIR=/containers/apptainer/hifiasm_0.25.0.sif
+
+OUT_DIR=/data/users/${USER}/assembly_annotation_course/hifiasm_assembly
+
+#creating output directory
+mkdir ${OUT_DIR}
+
+#move to output directory
+cd $OUT_DIR
+
+apptainer exec --bind $READS_DIR $CONTAINER_DIR hifiasm -o ERR11437318.asm $READS_DIR/ERR11437318.fastq.gz
+
+awk '/^S/{print ">"$2;print $3}' ERR11437318.gfa > ERR11437318.fa
