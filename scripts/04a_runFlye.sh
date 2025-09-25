@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#SBATCH --time=1-00:00:00
+#SBATCH --time=2-00:00:00
 #SBATCH --mem=64G
 #SBATCH --cpus-per-task=16
 #SBATCH --job-name=flye
@@ -21,4 +21,4 @@ OUT_DIR=/data/users/${USER}/assembly_annotation_course/flye_assembly
 mkdir ${OUT_DIR}
 
 #creating flye-assembly using pacbio-hifi reads
-apptainer exec --bind $READS_DIR $CONTAINER_DIR flye --pacbio-hifi $READS_DIR/*.fastq.gz --out-dir $OUT_DIR
+apptainer exec --bind $READS_DIR $CONTAINER_DIR flye --pacbio-hifi $READS_DIR/*.fastq.gz --out-dir $OUT_DIR --threads 16
