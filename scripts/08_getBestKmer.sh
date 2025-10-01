@@ -16,7 +16,7 @@ CONTAINER="/containers/apptainer/merqury_1.3.sif"
 
 export MERQURY="/usr/local/share/merqury"
 
-GENOME_SIZE=135000000
+GENOME_SIZE=143000000
 
 apptainer exec --bind $WORK_DIR $CONTAINER \
  sh ${MERQURY}/best_k.sh ${GENOME_SIZE} 0.001
