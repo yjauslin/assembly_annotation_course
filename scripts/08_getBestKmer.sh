@@ -12,9 +12,13 @@
 
 WORK_DIR=/data/users/${USER}/assembly_annotation_course
 
+CONTAINER="/containers/apptainer/merqury_1.3.sif"
+
 export MERQURY="/usr/local/share/merqury"
 
 GENOME_SIZE=135000000
 
 apptainer exec --bind $WORK_DIR $CONTAINER \
- sh $MERQURY/08_getBestKmer.sh ${GENOME_SIZE} 0.001
+ sh ${MERQURY}/best_k.sh ${GENOME_SIZE} 0.001
+
+
