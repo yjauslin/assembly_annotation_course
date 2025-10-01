@@ -20,5 +20,5 @@ OUT_DIR=${WORK_DIR}/mercury
 
 mkdir $OUT_DIR
 
-apptainer exec --bind /data ${CONTAINER} meryl k=18 count \
+apptainer exec --bind /data ${CONTAINER} meryl k=19 count \
   ${READS} output ${OUT_DIR}/reads.meryl     
