@@ -13,9 +13,6 @@
 #save working directory as variable
 WORK_DIR=/data/users/${USER}/assembly_annotation_course
 
-#save output directory as variable
-OUT_DIR=$WORK_DIR/mummer
-
 #save assembly directories as variables
 FLYE_DIR=$WORK_DIR/flye_assembly
 
@@ -36,8 +33,6 @@ LJA=${LJA_DIR}/assembly.fasta
 #save reference file as variable
 REFERENCE_DIR="/data/courses/assembly-annotation-course/references"
 REF="${REFERENCE_DIR}/Arabidopsis_thaliana.TAIR10.dna.toplevel.fa"
-
-mkdir $OUT_DIR
 
 compare_assembly(){
     #save query, reference and prefix as variables
