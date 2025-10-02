@@ -3,11 +3,11 @@
 #SBATCH --time=00:30:00
 #SBATCH --mem=1G
 #SBATCH --cpus-per-task=1
-#SBATCH --job-name=merqury
+#SBATCH --job-name=mummer
 #SBATCH --mail-user=yannick.jauslin@students.unibe.ch
 #SBATCH --mail-type=end
-#SBATCH --output=/data/users/yjauslin/output_merqury_%j.o
-#SBATCH --error=/data/users/yjauslin/error_merqury_%j.e
+#SBATCH --output=/data/users/yjauslin/output_mummer_%j.o
+#SBATCH --error=/data/users/yjauslin/error_mummer_%j.e
 #SBATCH --partition=pibu_el8
 
 #save working directory as variable
