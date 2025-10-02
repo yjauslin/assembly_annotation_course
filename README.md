@@ -8,15 +8,15 @@ Please be aware that you may need to change some of the file paths to not receiv
 
 - Scripts:
 - - **[01_runFastQC.sh](scripts/01_runFastQC.sh)**: evaluates quality of the reads using FastQC
-  - **[02_runFastp.sh](scripts/02_runFastp.sh)**:
-  - **[03_countKmer.sh](scripts/03_countKmer.sh)**:
-  - **[04a_runFlye.sh](scripts/04a_runFlye.sh)**:
-  - **[04b_runHifiasm.sh](scripts/04b_runHifiasm.sh)**:
-  - **[04c_runLJA.sh](scripts/04c_runLJA.sh)**:
-  - **[05_runTrinity.sh](scripts/05_runTrinity.sh)**:
-  - **[06_runBusco.sh](scripts/06_runBusco.sh)**:
-  - **[07_runQuast.sh](scripts/07_runQuast.sh)**:
-  - **[08_getBestKmer.sh](scripts/08_getBestKmer.sh)**:
-  - **[09_buildMeryldb.sh](scripts/09_buildMeryldb.sh)**:
-  - **[10_runMerqury.sh](scripts/10_runMerqury.sh)**:
-  - **[11_runNucmerMummer.sh](scripts/11_runNucmerMummer.sh)**:
+  - **[02_runFastp.sh](scripts/02_runFastp.sh)**: trim end of reads and filter out bad quality reads using fastp
+  - **[03_countKmer.sh](scripts/03_countKmer.sh)**: analyze and count kmers
+  - **[04a_runFlye.sh](scripts/04a_runFlye.sh)**: assemble genome using flye
+  - **[04b_runHifiasm.sh](scripts/04b_runHifiasm.sh)**: assemble genome using hifiasm
+  - **[04c_runLJA.sh](scripts/04c_runLJA.sh)**: assemble genome using LJA
+  - **[05_runTrinity.sh](scripts/05_runTrinity.sh)**: assemble Transcriptome using Trinity
+  - **[06_runBusco.sh](scripts/06_runBusco.sh)**: analyze assemblies with BUSCO
+  - **[07_runQuast.sh](scripts/07_runQuast.sh)**: analyze and compare assemblies with Quast
+  - **[08_getBestKmer.sh](scripts/08_getBestKmer.sh)**: find out best Kmer size
+  - **[09_buildMeryldb.sh](scripts/09_buildMeryldb.sh)**: build Meryldb for Merqury
+  - **[10_runMerqury.sh](scripts/10_runMerqury.sh)**: analyze assemblies with Merqury
+  - **[11_runNucmerMummer.sh](scripts/11_runNucmerMummer.sh)**: create Dotplots comparing the different assemblies to one reference assembly and to the other created assemblies
