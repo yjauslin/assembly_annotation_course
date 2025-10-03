@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-#SBATCH --time=00:30:00
-#SBATCH --mem=1G
-#SBATCH --cpus-per-task=1
+#SBATCH --time=01:00:00
+#SBATCH --mem=60G
+#SBATCH --cpus-per-task=16
 #SBATCH --job-name=mummer
 #SBATCH --mail-user=yannick.jauslin@students.unibe.ch
 #SBATCH --mail-type=end
@@ -34,6 +34,7 @@ LJA=${LJA_DIR}/assembly.fasta
 REFERENCE_DIR="/data/courses/assembly-annotation-course/references"
 REF="${REFERENCE_DIR}/Arabidopsis_thaliana.TAIR10.dna.toplevel.fa"
 
+#create funnction to make comparison of assemblies easier
 compare_assembly(){
     #save query, reference and prefix as variables
     QUERY=$1
@@ -41,30 +42,30 @@ compare_assembly(){
     PREFIX=$3
     
     #run nucmer
-    apptainer exec --bind $WORK_DIR $CONTAINER nucmer \
+    apptainer exec --bind /data $CONTAINER nucmer \
     --prefix $PREFIX --breaklen 1000 --mincluster 1000 \
       $REFERENCE $QUERY 
     
     #remove secondary alignments by mapping each query contig only once to the reference
-    apptainer exec --bind $WORK_DIR $CONTAINER delta-filter -1 ${PREFIX}.delta > ${PREFIX}.filtered.delta
+    apptainer exec --bind /data $CONTAINER delta-filter -1 ${PREFIX}.delta > ${PREFIX}.filtered.delta
 
     #create dotplot
-    apptainer exec --bind $WORK_DIR $CONTAINER mummerplot \
+    apptainer exec --bind /data $CONTAINER mummerplot \
       -R $REFERENCE -Q $QUERY \
       --prefix=${PREFIX} --filter --fat --layout --large -t png \
       ${PREFIX}.filtered.delta
     
     #display coordinates and other possibly useful information about the alignments
-    apptainer exec --bind $WORK_DIR $CONTAINER show-coords \
+    apptainer exec --bind /data $CONTAINER show-coords \
       -rcl ${PREFIX}.filtered.delta > ${PREFIX}.coords.txt
 
 
 }
 
 #Comparison: Assemblies vs Reference
-compare_assembly $REF $FLYE flye_vs_ref
-compare_assembly $REF $HIFIASM hifiasm_vs_ref
-compare_assembly $REF $LJA lja_vs_ref
+compare_assembly $FLYE $REF flye_vs_ref
+compare_assembly $HIFIASM $REF hifiasm_vs_ref
+compare_assembly $LJA $REF lja_vs_ref
 
 #Comparison: Pairwise Assemblies
 compare_assembly $FLYE $HIFIASM flye_vs_hifiasm
